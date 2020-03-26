@@ -92,7 +92,7 @@ int main(int argc, char** argv) {
 
   fprintf(stderr, "Setup\n");
 
-  A = make_matrix(kMatrixSize, kMatrixSize+1);
+  A = make_matrix(kMatrixSize, kMatrixSize);
   B = make_matrix(kMatrixSize, kMatrixSize);
   C = make_matrix(kMatrixSize, kMatrixSize);
 
@@ -107,6 +107,11 @@ int main(int argc, char** argv) {
         B->values[i][j] = 0;
       }
     }
+    for (int i = 0; i < C->rows; i++) {
+      for (int j = 0; j < C->cols; j++) {
+        C->values[i][j] = 0;
+      }
+    }
   } else {
     for (int i = 0; i < A->rows; i++) {
       for (int j = 0; j < A->cols; j++) {
@@ -116,6 +121,11 @@ int main(int argc, char** argv) {
     for (int i = 0; i < B->rows; i++) {
       for (int j = 0; j < B->cols; j++) {
         B->values[i][j] = rand_r(&randomSeed) % 10;
+      }
+    }
+    for (int i = 0; i < C->rows; i++) {
+      for (int j = 0; j < C->cols; j++) {
+        C->values[i][j] = 0;
       }
     }
   }
