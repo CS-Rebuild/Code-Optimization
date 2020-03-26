@@ -15,33 +15,33 @@ int main(int argc, char * argv[]) {  // What is the type of argv?
   char c[] = "6.172";
   char * pc = c;  // Valid assignment: c acts like a pointer to c[0] here.
   char d = *pc;
-  printf("char d = %c\n", d);  // What does this print?
+  printf("char d = %c\n", d);  // What does this print? #char d = 6#
 
   // compound types are read right to left in C.
   // pcp is a pointer to a pointer to a char, meaning that
   // pcp stores the address of a char pointer.
   char ** pcp;
-  pcp = argv;  // Why is this assignment valid?
+  pcp = argv;  // Why is this assignment valid? #argv[]->char*; argv->char **#
 
   const char * pcc = c;  // pcc is a pointer to char constant
-  char const * pcc2 = c;  // What is the type of pcc2?
+  char const * pcc2 = c;  // What is the type of pcc2? #char const == const char#
 
   // For each of the following, why is the assignment:
-  *pcc = '7';  // invalid?
-  pcc = *pcp;  // valid?
-  pcc = argv[0];  // valid?
+  *pcc = '7';  // invalid? #Y#
+  pcc = *pcp;  // valid? #Y#
+  pcc = argv[0];  // valid? #Y#
 
   char * const cp = c;  // cp is a const pointer to char
   // For each of the following, why is the assignment:
-  cp = *pcp;  // invalid?
-  cp = *argv;  // invalid?
-  *cp = '!';  // valid?
+  cp = *pcp;  // invalid? #Y#
+  cp = *argv;  // invalid? #Y#
+  *cp = '!';  // valid? #Y#
 
   const char * const cpc = c;  // cpc is a const pointer to char const
   // For each of the following, why is the assignment:
-  cpc = *pcp;  // invalid?
-  cpc = argv[0];  // invalid?
-  *cpc = '@';  // invalid?
+  cpc = *pcp;  // invalid? #Y#
+  cpc = argv[0];  // invalid? #Y#
+  *cpc = '@';  // invalid? #Y#
 
   return 0;
 }
