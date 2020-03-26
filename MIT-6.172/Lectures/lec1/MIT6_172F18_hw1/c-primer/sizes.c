@@ -6,7 +6,7 @@
 
 #define PRINT_SIZE(type)  \
 do {                      \
-  printf("size of %s : %zu bytes \n", #type, sizeof(type));  \
+  printf("size of %s : %zu bytes, size of %s : %zu bytes\n", #type, sizeof(type), #type" *", sizeof(type *));  \
 } while(0)
 
 int main() {
@@ -55,10 +55,16 @@ int main() {
 
 
   // Array declaration. Use your macro to print the size of this.
-  int x[5];
+  typedef int x[5];
+  int y[5];
 
   // You can just use your macro here instead: PRINT_SIZE("student", you);
-  printf("size of %s : %zu bytes \n", "student", sizeof(you));
+  printf("size of %s : %zu bytes, size of %s : %zu bytes\n",
+        "student", sizeof(you), "&student", sizeof(&you));
+  printf("size of %s : %zu bytes, size of %s : %zu bytes\n",
+        "y[5]", sizeof(y), "&y", sizeof(&y));
+  PRINT_SIZE(student);
+  PRINT_SIZE(x);
 
   return 0;
 }
