@@ -1,4 +1,10 @@
-# Homework 1
+# Calendar
+
+WEEK | LECTURES | RECITATIONS | KEY DATES
+-----|----------|-------------|----------
+1 | L1: Intro and Matrix Multiplication | R1: Basic Tools | HW1: Basic Tools, C Primer assigned
+
+# Homework 1: Getting Started
 # 4. C Primer 
 ## Preprocessing 
 ```c
