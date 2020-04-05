@@ -1,7 +1,7 @@
 CC := clang
 
 EXTRA_CFLAGS ?=
-CFLAGS := -Wall -std=gnu99 -g
+CFLAGS := -Wall -std=gnu99 -fno-unroll-loops#-g
 
 ifeq ($(DEBUG),1)
   CFLAGS += -O0
@@ -10,7 +10,7 @@ else
 endif
 
 ifeq ($(VECTORIZE),1)
-  CFLAGS += -Rpass=loop-vectorize -Rpass-missed=loop-vectorize -ffast-math
+  CFLAGS += -Rpass=loop-vectorize -Rpass-missed=loop-vectorize -ffast-math #-Rpass-analysis=loop-vectorize
 else
   CFLAGS += -fno-vectorize
 endif

@@ -47,6 +47,7 @@
 #define _stringify(V) #V
 
 int main(int argc, char *argv[]) {
+    // int N = atoi(argv[1]); 
     __TYPE__ A[N];
     __TYPE__ B[N];
     __TYPE__ C[N];
@@ -60,15 +61,22 @@ int main(int argc, char *argv[]) {
     // cache and gives us a 'cleaner' view of speedup from vectorization.
     for (j = 0; j < N; j++) {
         A[j] = 0;  // 0 was chosen arbitrarily
-        B[j] = 0;
+        B[j] = 3;
         C[j] = 0;
     }
 
     fasttime_t time1 = gettime();
 
     for (i = 0; i < I; i++) {
+        // #pragma clang loop vectorize(enable)
+        // #pragma clang loop vectorize_width(2)
+        // #pragma clang loop interleave(enable)
+        // #pragma clang loop interleave_count(2)
+        // for (j = 0; j < N; j+=2) {
+        //     C[j] = A[j] __OP__ B[j];
+        // }
         for (j = 0; j < N; j++) {
-            C[j] = A[j] __OP__ B[j];
+            total += A[j]; 
         }
     }
 
